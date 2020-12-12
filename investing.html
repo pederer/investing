@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Patrick Ederer">
+        <title>Investing · Answers to common questions</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://unpkg.com/tabulator-tables@4.7.2/dist/css/tabulator.min.css" rel="stylesheet">
+        <link type="text/css" href="investing.css" rel="stylesheet" />
+	</head>
+
+	<!-- Header -->
+	<body>
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Investing · Answers to common questions</a>
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- Sidebar -->
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="sidebar-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#compoundInterestTab">
+                                    <span data-feather="shopping-cart"></span>
+                                    Compound Interest
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#taxAdvantagedAccountsTab">
+                                    <span data-feather="users"></span>
+                                    Tax-advantaged Accounts
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#mutualFundsTab">
+                                    <span data-feather="users"></span>
+                                    What are stocks / bonds / etc?
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#todo">
+                                    <span data-feather="users"></span>
+                                    To do...
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+        
+                
+                <!-- Main -->
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                    <div class="tab-content" id="myTabContent">
+
+                        <!-- Compound Interest -->
+                        <div class="tab-pane fade show active" id="compoundInterestTab">
+
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Compound Interest</h1>
+                            </div>
+                            <p>
+                                If Alex borrows $10,000 to purchase a car, Alex is expected to pay back the loan "with interest".
+                                <strong>Interest is the cost of borrowing money</strong>.
+                                Alex agreed to a 5% Annual Percentage Rate (APR) of interest on the loan, but does not make any payments;
+                                after one year Alex owes $10,500, and after two years he owes $11025.
+                            </p>
+                            <div class="card">
+                                <div class="card-body">
+                                    1 Year: <code>$10,000 x 5% = $500 in interest</code>
+                                    <br />
+                                    2 Years: <code>$10,500 x 5% = $525 in compound interest</code>
+                                </div>
+                            </div>
+                            <p>
+                                Alex owes more in interest the second year because he is paying interest on both the initial principal and the previously
+                                accumulated interest; this is called <strong>Compound Interest</strong>. In this context, Compound Interest is very bad
+                                because it causes your debt to grow at an exponential rate. However, you may have heard of the phrase "Compound Interest"
+                                used in a positive way; this is because many people confuse Compound Interest with a similar concept: Compound Rate of Return.
+                            </p>
+                            
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Compound Rate of Return</h1>
+                            </div>
+                            <p>
+                                Although the example above shows why unpaid debt can accumulate quickly, we can employ the same principles to investing to see how an
+                                investment can grow over time. If we earn income from an investment but reinvest our income back into the investment, the next income
+                                we earn from the investment will be based on both the principal and the previous income: this is called
+                                <strong>Compound Rate of Return</strong>. A rate of return is the gain (profit) of an investment, expressed as a percentage of the
+                                investment. Although this rate of return is not "interest", it functions in much the same way. It is common for the term "compound
+                                interest" to be applied to investment gains, though technically "compound rates of return" may be more appropriate.
+                            </p>
+                            
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Worksheet</h1>
+                            </div>
+
+                            <div class="row">
+                                <div id="compoundConfigForm" class="col-md-4">
+                                    <div class="form-group row">
+                                        <label for="compoundStartingAmountInput" class="col-sm-4 col-md-12 col-lg-6 col-form-label">Starting Amount (Principal)</label>
+                                        <div class="col-sm-8 col-md-12 col-lg-6">
+                                            <span class="precedingChar">$</span>
+                                            <input type="number" class="form-control" id="compoundStartingAmountInput" value=10000>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="compoundIntrestRateInput" class="col-sm-4 col-md-12 col-lg-6 col-form-label">Annual Rate of Return</label>
+                                        <div class="col-sm-8 col-md-12 col-lg-6">
+                                            <input type="number" class="form-control" id="compoundIntrestRateInput" value=7>
+                                            <span class="followingChar">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="compoundYearsOfInvestmentInput" class="col-sm-4 col-md-12 col-lg-6 col-form-label">Years of Investment</label>
+                                        <div class="col-sm-8 col-md-12 col-lg-6">
+                                            <input type="number" class="form-control" id="compoundYearsOfInvestmentInput" value=30>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="compoundTableDiv" class="col-md-8">
+                                    <!-- Data Table -->
+                                    <table id="compoundTable"></table>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Rule of 72</h1>
+                            </div>
+                            <p>
+                                Compound interest / compound rates of return are hard to calculate in your head. Thankfully there is an easy-to-remember formula
+                                for determining the effects of compounding over time: <strong>The Rule of 72!</strong> Divide 72 by the rate of return (or interest rate) to get an
+                                approximation of how long it will take your principal to double.
+                            </p>
+
+                            Formula:
+                            <div class="card">
+                                <div class="card-body">
+                                    <code>72 / Rate = No. of years</code>
+                                </div>
+                            </div>
+
+                            Example: An investment with an annual interest rate of 4% should double in approximately 18 years.
+                            <div class="card">
+                                <div class="card-body">
+                                    <code>72 / 4 = 18</code>
+                                </div>
+                            </div>
+                            <p>
+                                The formula is not 100% accurate, but it is close! Use the worksheet above to double-check.
+                            </p>
+
+                        </div>
+
+                        <!-- Tax Advantaged Accounts -->
+                        <div class="tab-pane fade" id="taxAdvantagedAccountsTab">
+
+                            <!-- Tab Title: Tax-advantaged Accounts -->
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Tax-advantaged Accounts</h1>
+                            </div>
+
+                            <div id="configurationForm">
+                                <div class="form-group row">
+                                    <label for="startingAmountInput" class="col-sm-2 col-form-label">Starting amount</label>
+                                    <div class="col-sm-10">
+                                        <span class="precedingChar">$</span>
+                                        <input type="number" class="form-control" id="startingAmountInput" value=10000>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="incomeTaxInput" class="col-sm-2 col-form-label">Income tax rate</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="incomeTaxInput" value=12>
+                                        <span class="followingChar">%</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="capitalGainsInput" class="col-sm-2 col-form-label">Capital gains tax rate</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="capitalGainsInput" value=15>
+                                        <span class="followingChar">%</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="intrestRateInput" class="col-sm-2 col-form-label">Interest Rate</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="intrestRateInput" value=7>
+                                        <span class="followingChar">%</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="yearsOfInvestmentInput" class="col-sm-2 col-form-label">Years of investment</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="yearsOfInvestmentInput" value=30>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Data Table -->
+                            <table id="taxAdvantageTable"></table>
+                            
+                        </div>
+
+                        <!-- Mutual Funds -->
+                        <div class="tab-pane fade" id="mutualFundsTab">
+
+                            <!-- Tab Title: Mutual Funds -->
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">What are stocks?</h1>
+                            </div>
+                            <p>
+                                A "stock" is a security (i.e. tradable asset) that represents ownership in a company. Having a company's stock
+                                entitles the owner of the stock to voting rights within the company, and rights to the company's assets and profits,
+                                proportional to the number of stocks owned. Some companies return a share of profits to stock owners (also called
+                                shareholders) by a per-stock payout; this is called a "dividend". A company's stock changes in value over time; if a
+                                stock is sold for a price exceeding the original purchase price, the seller is said to have made gains on his
+                                original investment of capital, which is called "capital gains". Dividends and capital gains are two ways that
+                                investors attempt to profit from stocks.
+                            </p>
+
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">What are bonds?</h1>
+                            </div>
+                            <p>
+                                A "bond" can be thought of as a certificate of debt, or the record of a loan. Companies and governments issue bonds
+                                to raise money. Investors give an amount of money (called the "bond principal"), and in exchange they are given a
+                                bond which spells out what rate of interest (called the "coupon rate") the bond holder is entitled to, and when the
+                                bond principal must be repaid. A bond can usually be traded like other securities, though the value of a bond
+                                decreases over time as interest payments are made. Bonds are considered safer investments than stocks, for two
+                                reasons: first, bonds tend to have a more stable value (so long as the issuer remains solvent); second, in the case
+                                of bankrupcy, debts (including bonds) are paid before stockholders. Bonds investment gains usually lag
+                                behind stocks over the long term. However, bonds are often used in low-risk investment portfolios; a retired investor
+                                may be able to live off of the stable income of bond intrest without worrying as much about the state of the stock
+                                exchange.
+                            </p>
+
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">What are mutual funds?</h1>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>
+                                        A "mutual fund" is a managed bundle (or portfolio) of stocks, bonds, and other securities. In most cases, a mutual
+                                        fund includes a large number of securities, with each individual security weighted proportionally according to the
+                                        fund manager's decision. As an example, a fund might have allocations similar to the accompanying table.
+                                    </p>
+                                    <p>
+                                        A mutual fund's value is tied to securities within the fund, so if Company Alpha's stock value falls then the value of a
+                                        mutual fund's share would fall proportionally. However, because a mutual fund's portfolio includes many different securities, the
+                                        impact of one stock's negative or positive performance has a muted impact on the mutual fund as a whole. This is why
+                                        mutual funds are often described as a "diversified investment". The method in which an investor profits from a mutual
+                                        fund depends on the types of securities within the portfolio: some securities appreciate (increase) in value (capital
+                                        gains), pay dividends, or pay interest. 
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <table id="mutualFundsTable"></table>
+                                </div>
+                            </div>
+
+                            <p style="margin-bottom: 0;">
+                                Many people invest in mutual funds because they are diversified and managed according to an investment strategy.
+                                However, there are a few drawbacks of which an investor should be aware.
+                            </p>
+                            <ul>
+                                <li>
+                                    There are fees associated with investing in a mutual fund. Different funds have vastly different types of fees,
+                                    so it is important to know what those fees are, and how it will affect your investment return.
+                                </li>
+                                <li>
+                                    Mutual fund shares do not entitle the owner to voting rights for any company within the fund. This fact may not
+                                    be important for every investor, but some appreciate the "ownership" commanded by actual stocks.
+                                </li>
+                                <li>
+                                    Mutual fund shares are purchased or sold once per day. If you are a long-term investor, this should not be a
+                                    problem. However, short-term investors (either intentionally or accidentally) should understand that mutual
+                                    fund shares are not as "liquid" (easily converted to cash) as stocks; although, they are
+                                    more liquid than some other securities.
+                                </li>
+                            </ul>
+
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">What are index funds?</h1>
+                            </div>
+                            <p>
+                                A "market index" is a theoretical portfolio which represents a segment of a market. For example, the Standard and Poor's
+                                500 Index (also called the "S&P 500") is an index of 505 of the largest companies on the stock exchange; the "market"
+                                is large capital companies. An "index fund" is a mutual fund which is managed according to the rules of an index; the
+                                stocks, and proportions of stocks, identified by an index is followed by the corresponding index fund. Because the
+                                makeup of indexes are known, and changes to indexes are widely available, the cost of managing an index fund is
+                                generally lower than that of other types of mutual funds, which generally means that the fees associated with
+                                investing in an index fund are very low compared to other managed accounts.
+                            </p>
+                            
+                        </div>
+
+                        <!-- Tax Advantaged Accounts -->
+                        <div class="tab-pane fade" id="todo">
+
+                            <!-- Tab Title: To do... -->
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">To do...</h1>
+                            </div>
+
+                            <div>
+                                <ul>
+                                    <li>Investment strategies: short-term versus long-term.</li>
+                                    <li>Explain what "tax-advantaged accounts" are.</li>
+                                    <li>What is a money market account?</li>
+                                    <li>What are ETFs?</li>
+                                    <li>What are CDs?</li>
+                                    <li>Why do I pay taxes if I have not sold anything from my taxable mutual fund account?</li>
+                                    <li>What is dollar-cost averaging?</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+		
+		<!-- JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.7.2/dist/js/tabulator.min.js"></script>
+        <script type="text/javascript" src="investing.js"></script>
+	</body>
+</html>

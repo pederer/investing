@@ -1,0 +1,48 @@
+.navbar .navbar-toggler {
+    top: .25rem;
+    right: 1rem;
+}
+
+.tab-pane {
+    padding-bottom: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+.card-body {
+    padding: 0.5rem 1.25rem;
+}
+
+/* Tax advantaged accounts */
+#configurationForm input {
+    max-width: 150px;
+    padding: .375rem 1.25rem;
+    text-align: right;
+}
+#configurationForm .precedingChar {
+    left: 25px;
+    position: absolute;
+    top: 8px;
+}
+#configurationForm .followingChar {
+    left: 145px;
+    position: absolute;
+    top: 8px;
+}
+
+/* Compound interest */
+#compoundConfigForm input {
+    padding: .375rem 0.75rem;
+    text-align: right;
+}
+#compoundConfigForm .precedingChar {
+    left: 20px;
+    position: absolute;
+    top: 8px;
+}
+#compoundConfigForm .followingChar {
+    right: 20px;
+    position: absolute;
+    top: 8px;
+}
